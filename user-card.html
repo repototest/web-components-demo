@@ -1,0 +1,43 @@
+<template id="userCardTemplate">
+  <style>
+      /* :host {
+        color: blue;
+      } */
+      /* .image {
+      flex: 0 0 auto;
+      width: 160px;
+      height: 160px;
+      vertical-align: middle;
+      border-radius: 5px;
+      }
+      .container {
+      box-sizing: border-box;
+      padding: 20px;
+      height: 160px;
+      } */
+      
+  </style>
+  <slot name="username"></slot>
+  <img class="image">
+  <slot></slot>
+  <p>default child</p>
+  <slot name="email"></slot>
+
+</template>
+
+<script>
+class UserCard extends HTMLElement {
+constructor() {
+  super();
+  var shadow = this.attachShadow( { mode: 'closed' } );
+
+  // 注意这里不能直接用document，document在html里指body,组件里没有body
+  var templateElem = document.currentScript.ownerDocument.getElementById('userCardTemplate');
+  var content = templateElem.content.cloneNode(true);
+  content.querySelector('img').setAttribute('src', this.getAttribute('image'));
+
+  shadow.appendChild(content);
+}
+}
+window.customElements.define('user-card', UserCard);
+</script>

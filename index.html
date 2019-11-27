@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      p{
+        color: red;
+      }
+      user-card::shadow > p {
+        color:aqua;
+      }
+      /* ::content p {
+        font-weight: bol;
+      } */
+    </style>
+    <link rel="import" href="user-card.html">
+    
+  </head>
+  <body>
+    <p>parent</p>
+    <user-card
+        image="https://user-gold-cdn.xitu.io/2019/8/24/16cc2f9154b7873c?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1"
+    >
+    <p slot="username">xxx</p>
+    <p>default parent</p>
+    <p slot="email">xxx@yyy.com</p>
+    </user-card>
+  </body>
+</html>
